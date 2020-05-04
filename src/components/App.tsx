@@ -6,9 +6,10 @@ import { Context } from "../util/contexts";
 import useWindowSize from "../util/useWindowSize";
 import { isMobile } from "react-device-detect";
 import { rootReducer } from "util/homemadeRedux/reducers";
-import RandomMain from "./Explore/Random";
+import RandomMain from "./Random";
 import { getCardSizeByWindowSize } from "util/cardSizeBreakpoints";
 import { SarahStudents } from './studentsData';
+import Cover from "./Cover";
 
 interface IAppProps {
   students: IStudentSummary[] | undefined;
@@ -51,8 +52,8 @@ const App = ({ students }: IAppProps) => {
           <Route path="/random/:studentIdOrSlug?">
             <RandomMain students={students} />
           </Route>
-          <Route path="/">
-            <RandomMain students={students} />
+          <Route path="/" exact>
+            <Cover />
           </Route>
         </Switch>
       </Context.Provider>
@@ -63,7 +64,7 @@ const App = ({ students }: IAppProps) => {
 
 
 const AppContainer = () => {
-  const [students, setStudents] = useState<IStudentSummary[]>(SarahStudents);
+  const [students] = useState<IStudentSummary[]>(SarahStudents);
 
   return <App students={students} />;
 };

@@ -2,7 +2,7 @@ import React, { useState, FC, useCallback, useEffect } from "react";
 import { IStudentSummary } from "types";
 import { useSpring, animated as a, SpringValue, config } from "react-spring";
 import { useHistory } from "react-router-dom";
-import Rolling20, { IRolling20Props } from "../Shared/Rolling20";
+import Rolling20, { IRolling20Props } from "./Rolling20";
 import useEventListener from '@use-it/event-listener';
 
 interface IRandomSpringProps {
