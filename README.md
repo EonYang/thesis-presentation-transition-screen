@@ -1,5 +1,14 @@
 Edit `src/components/studentsData.ts` to enter your students' names.
 
+Then:
+
+```
+yarn start
+yarn run elec
+```
+
+Left || right arrow key to navigate between students.
+
 ## Available Scripts
 
 In the project directory, you can run:

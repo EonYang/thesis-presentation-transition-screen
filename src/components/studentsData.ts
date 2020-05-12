@@ -1,6 +1,11 @@
 import { IStudentSummary } from "types";
 export const SarahStudents: IStudentSummary[] = [
   {
+    student_id: "0.01",
+    student_name: "Come back soon",
+    title: "Technical difficulty",
+  },
+  {
     student_id: "0.1",
     student_name: "Come back at 11:46",
     title: "Break",
@@ -47,7 +52,7 @@ export const SarahStudents: IStudentSummary[] = [
   },
   {
     student_id: "7.5",
-    student_name: "Come back at 14:23",
+    student_name: "Come back at 14:12, up next: Andrew Lee",
     title: "Lunch Break",
   },
   {
