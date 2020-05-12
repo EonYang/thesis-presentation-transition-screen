@@ -109,6 +109,7 @@ const RandomAnimation: FC<IRandomAnimationProps> = ({
         className="random-container"
         style={{
           top: curtainDown,
+          height: "100vh",
         }}
       >
         <AnimateTitle {...{ animatedName, title }} />
@@ -117,6 +118,7 @@ const RandomAnimation: FC<IRandomAnimationProps> = ({
           <Rolling20 {...Rolling20Props} />
         </div>
       </a.div>
+      <div>Select Student:</div>
     </>
   );
 
