@@ -1,6 +1,15 @@
-Edit `src/components/studentsData.ts` to enter your students' names.
+# Thesis Week Transition Slides
 
-Then:
+This repository contains an electron app for playing transition slides for your thesis section.
+
+## Setting the contents for your section.
+
+The contents that is read for the slides is located in `./src/studentsData.ts`.
+
+The schedule for each day has been scraped into [./src/schedules](./src/schedules);  To set the content for you slides, copy and paste the corresponding day's schedule from `./src/schedules` into `./src/studentsData.ts`.
+
+
+## Setting up the Application
 
 ```
 yarn install
@@ -9,7 +18,7 @@ yarn start
 yarn run elec
 ```
 
-Left || right arrow key to navigate between students.
+Left || right arrow key to navigate between slides.
 
 ## Available Scripts
 
