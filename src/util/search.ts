@@ -1,11 +1,11 @@
-import { IStudentSummary, ISearch } from "types";
+import { IDisplayEntry, ISearch } from "types";
 import * as JsSearch from "js-search";
 
-interface ISearchableStudent extends IStudentSummary {
+interface ISearchableStudent extends IDisplayEntry {
   index: number;
 }
 
-export const buildSearch = (students: IStudentSummary[]): ISearch => {
+export const buildSearch = (students: IDisplayEntry[]): ISearch => {
   const search = new JsSearch.Search("student_name");
   search.addIndex("student_name");
   search.addIndex("title");
@@ -13,6 +13,6 @@ export const buildSearch = (students: IStudentSummary[]): ISearch => {
   search.addDocuments(students);
 
   return (searchString: string) => {
-    return search.search(searchString) as IStudentSummary[];
+    return search.search(searchString) as IDisplayEntry[];
   };
 };

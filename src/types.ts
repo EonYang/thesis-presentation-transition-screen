@@ -7,9 +7,8 @@ export interface ITag {
 
 export declare type TopicDict = { [key: string]: string };
 
-export interface IStudentSummary {
-  student_id: string;
-  student_name: string;
+export interface IDisplayEntry {
+  pre_title: string;
   title: string;
 }
 
@@ -26,38 +25,37 @@ export interface IImage {
   caption: string;
 }
 
-export interface IStudentDetails extends IStudentSummary {
+export interface IStudentDetails extends IDisplayEntry {
   technical_details: string;
   further_reading: string;
   project_url: string;
 }
 
 export interface IStudentApi {
-  getAllStudents: () => Promise<IStudentSummary[]>;
+  getAllStudents: () => Promise<IDisplayEntry[]>;
   getStudent: (studentId: string) => Promise<IStudentDetails>;
 }
 
 /* Video Schedule Types */
 export interface VideoScheduleStudent {
   name: string;
-  slug: string;
 }
 
 export interface VideoScheduleRowContents {
   time: string;
-  tuesday?: VideoScheduleStudent;
-  wednesday?: VideoScheduleStudent;
-  thursday?: VideoScheduleStudent;
-  friday?: VideoScheduleStudent;
+  tuesday: VideoScheduleStudent | undefined;
+  wednesday: VideoScheduleStudent | undefined;
+  thursday: VideoScheduleStudent | undefined;
+  friday: VideoScheduleStudent | undefined;
 }
 
 export interface CardToShow {
-  student: IStudentSummary;
+  student: IDisplayEntry;
   matrixX: number;
   matrixY: number;
 }
 
-export declare type IStudentFilter = (student: IStudentSummary) => boolean;
+export declare type IStudentFilter = (student: IDisplayEntry) => boolean;
 
 type FilterStatus = "add" | "remove" | "nochange";
 
@@ -66,7 +64,7 @@ export interface ISearchResult {
   student_name: string;
 }
 
-export declare type ISearch = (search: string) => IStudentSummary[];
+export declare type ISearch = (search: string) => IDisplayEntry[];
 
 // types for homemade redux and messagehub
 export enum ActionTypes {
