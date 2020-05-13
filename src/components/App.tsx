@@ -1,18 +1,18 @@
 import React, { useEffect, useState, useReducer } from "react";
 import "scss/styles.scss";
 import { Switch, Route } from "react-router-dom";
-import { IStudentSummary, ICentralStore, ICardSize } from "types";
+import { IDisplayEntry, ICentralStore, ICardSize } from "types";
 import { Context } from "../util/contexts";
 import useWindowSize from "../util/useWindowSize";
 import { isMobile } from "react-device-detect";
 import { rootReducer } from "util/homemadeRedux/reducers";
 import RandomMain from "./Random";
 import { getCardSizeByWindowSize } from "util/cardSizeBreakpoints";
-import { SarahStudents } from './studentsData';
+import { schedule } from "./studentsData";
 import Cover from "./Cover";
 
 interface IAppProps {
-  students: IStudentSummary[] | undefined;
+  students: IDisplayEntry[] | undefined;
 }
 
 const navigatorPlatform = {
@@ -61,10 +61,8 @@ const App = ({ students }: IAppProps) => {
   );
 };
 
-
-
 const AppContainer = () => {
-  const [students] = useState<IStudentSummary[]>(SarahStudents);
+  const [students] = useState<IDisplayEntry[]>(schedule);
 
   return <App students={students} />;
 };

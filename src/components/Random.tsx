@@ -1,13 +1,13 @@
 import React, { useState, FC, useCallback, useEffect } from "react";
-import { IStudentSummary } from "types";
+import { IDisplayEntry } from "types";
 import { useSpring, animated as a, SpringValue, config } from "react-spring";
 import { useHistory } from "react-router-dom";
 import Rolling20, { IRolling20Props } from "./Rolling20";
-import useEventListener from '@use-it/event-listener';
+import useEventListener from "@use-it/event-listener";
 
 interface IRandomSpringProps {
-  student: IStudentSummary;
-  students: IStudentSummary[];
+  student: IDisplayEntry;
+  students: IDisplayEntry[];
   reRoll: (goback: boolean) => void;
 }
 
@@ -17,7 +17,7 @@ const RandomSpring: FC<IRandomSpringProps> = ({
   reRoll,
 }) => {
   const [redirect, setRedirect] = useState(false);
-  const { student_id, student_name, title } = student;
+  const { pre_title, title } = student;
   const history = useHistory();
 
   const initialSpring = {
@@ -37,7 +37,7 @@ const RandomSpring: FC<IRandomSpringProps> = ({
       await next({ curtainDown: "0vh" });
       await next(
         (() => {
-          history.replace(`/random/${student_id}`);
+          history.replace(`/random/${title}`);
           return { titleOpacity: 1, config: config.slow };
         })()
       );
@@ -53,12 +53,11 @@ const RandomSpring: FC<IRandomSpringProps> = ({
   const handler = ({ key }: any) => {
     if (String(key) === "ArrowRight") {
       console.log(key);
-      reRoll(false)
-    }
-    else if (String(key) === "ArrowLeft") reRoll(true);
-  }
+      reRoll(false);
+    } else if (String(key) === "ArrowLeft") reRoll(true);
+  };
 
-  useEventListener('keydown', handler);
+  useEventListener("keydown", handler);
 
   useEffect(() => {
     document.body.scrollTo({ top: 0, behavior: "smooth" });
@@ -71,22 +70,21 @@ const RandomSpring: FC<IRandomSpringProps> = ({
       setSpring(initialSpring);
     }, 100);
     // eslint-disable-next-line
-  }, [student.student_id]);
+  }, [student.title]);
 
   return (
     <>
-      <RandomAnimation {...{ ...spring, student_name, title }} />
+      <RandomAnimation {...{ ...spring, pre_title, title }} />
     </>
   );
 };
-
 
 interface IRandomAnimationProps {
   curtainDown: SpringValue<string>;
   animatedName: SpringValue<number>;
   titleOpacity: SpringValue<number>;
   finished: SpringValue<number>;
-  student_name: string;
+  pre_title: string;
   title: string;
 }
 
@@ -102,25 +100,25 @@ const RandomAnimation: FC<IRandomAnimationProps> = ({
   finished,
   curtainDown,
   animatedName,
-  student_name,
+  pre_title: student_name,
 }) => (
-    <>
-      <a.div
-        className="random-container"
-        style={{
-          top: curtainDown,
-          height: "100vh",
-        }}
-      >
-        <AnimateTitle {...{ animatedName, title }} />
-        <a.h3 style={{ opacity: titleOpacity }}>{student_name}</a.h3>
-        <div className="position-absolute">
-          <Rolling20 {...Rolling20Props} />
-        </div>
-      </a.div>
-      <div>Select Student:</div>
-    </>
-  );
+  <>
+    <a.div
+      className="random-container"
+      style={{
+        top: curtainDown,
+        height: "100vh",
+      }}
+    >
+      <AnimateTitle {...{ animatedName, title }} />
+      <a.h3 style={{ opacity: titleOpacity }}>{student_name}</a.h3>
+      <div className="position-absolute">
+        <Rolling20 {...Rolling20Props} />
+      </div>
+    </a.div>
+    <div>Select Student:</div>
+  </>
+);
 
 const ANIMATE_RANGE = 70;
 const clampNameCode = (n: number): number => {
@@ -156,23 +154,26 @@ const AnimateTitle: FC<IAnimateTitleProps> = ({ title, animatedName }) => {
 };
 
 interface IRandomMainProps {
-  students: IStudentSummary[];
+  students: IDisplayEntry[];
 }
 
 const RandomMain: FC<IRandomMainProps> = ({ students }) => {
   const [count, set] = useState(0);
   const l = students.length;
-  const reRoll = useCallback((goback: boolean = false) => {
-    set(a => goback ? --a : ++a);
-  }, [set]);
-  return <RandomSpring {...{ student: students[(count % l + l) % l], students, reRoll }} />;
+  const reRoll = useCallback(
+    (goback: boolean = false) => {
+      set((a) => (goback ? --a : ++a));
+    },
+    [set]
+  );
+  return (
+    <RandomSpring
+      {...{ student: students[((count % l) + l) % l], students, reRoll }}
+    />
+  );
 };
 
-const nullGuard = ({
-  students,
-}: {
-  students: IStudentSummary[] | undefined;
-}) => {
+const nullGuard = ({ students }: { students: IDisplayEntry[] | undefined }) => {
   if (!students) return <h1>Loading...</h1>;
   return <RandomMain {...{ students }} />;
 };

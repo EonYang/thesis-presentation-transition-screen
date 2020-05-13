@@ -1,6 +1,6 @@
 import axios from "axios";
 import * as config from "config";
-import { IStudentApi, IStudentDetails, IStudentSummary } from "types";
+import { IStudentApi, IStudentDetails, IDisplayEntry } from "types";
 
 export const getAllStudents = () => getApi().getAllStudents();
 export const getStudent = (studentId: string) => getApi().getStudent(studentId);
@@ -18,7 +18,7 @@ const baseApiUrl =
 
 const realApi: IStudentApi = {
   getAllStudents: async () =>
-    (await axios.get(`${baseApiUrl}?student_id=-1`)).data as IStudentSummary[],
+    (await axios.get(`${baseApiUrl}?student_id=-1`)).data as IDisplayEntry[],
   getStudent: async (studentId: string) =>
     (await axios.get(`${baseApiUrl}?student_id=${studentId}`))
       .data as IStudentDetails,
@@ -26,7 +26,7 @@ const realApi: IStudentApi = {
 
 const fake2018Api: IStudentApi = {
   getAllStudents: async () =>
-    (await axios.get("/2019/all.json")).data as IStudentSummary[],
+    (await axios.get("/2019/all.json")).data as IDisplayEntry[],
   getStudent: async (studentId) =>
     (await axios.get(`/2019/${studentId}.json`)).data as IStudentDetails,
 };

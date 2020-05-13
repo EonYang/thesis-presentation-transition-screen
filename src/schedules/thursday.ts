@@ -1,16 +1,33 @@
 import { IDisplayEntry } from "types";
+
 export const schedule: IDisplayEntry[] = [
   {
     pre_title: "Come back soon",
-    title: "Technical difficulty",
-  },
-  {
-    pre_title: "Come back at 11:46",
-    title: "Break",
+    title: "Technical difficulties",
   },
   {
     pre_title: "",
-    title: "Up Next: Jackie Liu",
+    title: "Presentations begin at 10:48 AM",
+  },
+  {
+    pre_title: "",
+    title: "Up Next: Kat Vlasova",
+  },
+  {
+    pre_title: "",
+    title: "Up Next: Katie Krobock",
+  },
+  {
+    pre_title: "",
+    title: "Up Next: Ruojin Shi",
+  },
+  {
+    pre_title: "",
+    title: "Up Next: Andri Kumar",
+  },
+  {
+    pre_title: "break. Come back at 11:48 AM",
+    title: "Up Next: Jacquelyn Liu",
   },
   {
     pre_title: "",
@@ -18,7 +35,7 @@ export const schedule: IDisplayEntry[] = [
   },
   {
     pre_title: "",
-    title: "Up Next: Lydia Powell Jessup",
+    title: "Up Next: Lydia Jessup",
   },
   {
     pre_title: "",
@@ -26,7 +43,7 @@ export const schedule: IDisplayEntry[] = [
   },
   {
     pre_title: "",
-    title: "Up Next: Andrew Lee",
+    title: "Up Next: Andrew lee",
   },
   {
     pre_title: "",
@@ -34,19 +51,15 @@ export const schedule: IDisplayEntry[] = [
   },
   {
     pre_title: "",
-    title: "Up Next: Nick Tanic",
+    title: "Up Next: Tanic Nakpresha",
   },
   {
     pre_title: "",
     title: "Up Next: Suzanne Li",
   },
   {
-    pre_title: "Come back at 14:12, up next: Andrew Lee",
-    title: "Lunch Break",
-  },
-  {
-    pre_title: "",
-    title: "Up Next: Maria Shin",
+    pre_title: "lunch. Come back at 2:24 PM",
+    title: "Up Next: Hye (Maria) Ryenog",
   },
   {
     pre_title: "",
@@ -62,7 +75,7 @@ export const schedule: IDisplayEntry[] = [
   },
   {
     pre_title: "",
-    title: "Up Next: Becca Moore ",
+    title: "Up Next: Becca Moore",
   },
   {
     pre_title: "",
@@ -70,14 +83,10 @@ export const schedule: IDisplayEntry[] = [
   },
   {
     pre_title: "",
-    title: "Up Next: Emma Rae Norton",
+    title: "Up Next: Emma Norton",
   },
   {
     pre_title: "",
-    title: "Up Next: Adi Dahiya",
-  },
-  {
-    pre_title: "See You Tomorrow at 10 AM",
-    title: "Thank You",
+    title: "Up Next: Aditya (Adi) Dahiya",
   },
 ];
