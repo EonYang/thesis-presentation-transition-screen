@@ -8,7 +8,7 @@ import { isMobile } from "react-device-detect";
 import { rootReducer } from "util/homemadeRedux/reducers";
 import RandomMain from "./Random";
 import { getCardSizeByWindowSize } from "util/cardSizeBreakpoints";
-import { schedule } from "./studentsData";
+import { schedule } from "studentsData";
 import Cover from "./Cover";
 
 interface IAppProps {
