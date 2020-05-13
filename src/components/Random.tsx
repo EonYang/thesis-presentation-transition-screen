@@ -146,11 +146,7 @@ interface IAnimateTitleProps {
   title: string;
 }
 const AnimateTitle: FC<IAnimateTitleProps> = ({ title, animatedName }) => {
-  return (
-    <a.h2>
-      {animatedName.to((x) => mapNumberToChar(x, title.toUpperCase()))}
-    </a.h2>
-  );
+  return <a.h2>{title.toUpperCase()}</a.h2>;
 };
 
 interface IRandomMainProps {

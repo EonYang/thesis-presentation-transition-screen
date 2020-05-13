@@ -26,7 +26,7 @@ export const schedule: IDisplayEntry[] = [
     title: "Up Next: Andri Kumar",
   },
   {
-    pre_title: "break. Come back at 11:48 AM",
+    pre_title: "break until 11:48 AM",
     title: "Up Next: Jacquelyn Liu",
   },
   {
@@ -58,7 +58,7 @@ export const schedule: IDisplayEntry[] = [
     title: "Up Next: Suzanne Li",
   },
   {
-    pre_title: "lunch. Come back at 2:24 PM",
+    pre_title: "lunch break until 2:24 PM",
     title: "Up Next: Hye (Maria) Ryenog",
   },
   {
@@ -90,7 +90,7 @@ export const schedule: IDisplayEntry[] = [
     title: "Up Next: Aditya (Adi) Dahiya",
   },
   {
-    pre_title: "See You Tomorrow at 10:00 AM",
+    pre_title: "Presentations start Tomorrow at 10:00 AM",
     title: "Thank You",
   },
 ];

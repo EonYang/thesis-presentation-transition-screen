@@ -13,7 +13,9 @@ interface SchedulEntry {
 
 type DaySchedule = SchedulEntry[]
 
-const parseDaySchedule = (dayOfWeek: 'tuesday' | 'wednesday' | 'thursday' | 'friday', scheduleByTime: VideoScheduleRowContents[] | null): DaySchedule => {
+type dayOfWeek = 'tuesday' | 'wednesday' | 'thursday' | 'friday';
+
+const parseDaySchedule = (dayOfWeek: dayOfWeek , scheduleByTime: VideoScheduleRowContents[] | null): DaySchedule => {
   const result: DaySchedule = [];
 
   if (!scheduleByTime) return result;
@@ -32,6 +34,8 @@ const parseDaySchedule = (dayOfWeek: 'tuesday' | 'wednesday' | 'thursday' | 'fri
 }
 
 const breakTypes = ["break", "lunch"];
+
+const breakingText = (breakText: string): string => (breakText.toLowerCase() === 'lunch' ? 'lunch break' : 'break');
 
 const toPlayableSchedule = (daySchedule: DaySchedule, nextDaySchedule?: DaySchedule): IDisplayEntry[] => {
   const technicalDiffulty: IDisplayEntry = {
@@ -63,7 +67,7 @@ const toPlayableSchedule = (daySchedule: DaySchedule, nextDaySchedule?: DaySched
 
     if (breaking) {
       result.push({
-        pre_title: `${breaking}. Come back at ${entry.time}`,
+        pre_title: `${breakingText(breaking)} until ${entry.time}`,
         title: `Up Next: ${entry.name}`
       });
       breaking = null;
@@ -78,7 +82,7 @@ const toPlayableSchedule = (daySchedule: DaySchedule, nextDaySchedule?: DaySched
 
   if (nextDaySchedule) {
     result.push({
-      pre_title: `See You Tomorrow at ${nextDaySchedule[0].time}`,
+      pre_title: `Presentations start Tomorrow at ${nextDaySchedule[0].time}`,
       title: "Thank You",
     })
   }
@@ -145,15 +149,15 @@ const scrapeSchedule = async (url: string, destinationFileName: string) => {
 
   console.log('got schedule: ', evalResults);
 
-  const days = ['tuesday', 'wednesday', 'thursday', 'friday'];
+  const days: dayOfWeek[] = ['tuesday', 'wednesday', 'thursday', 'friday'];
 
   days.forEach(async (day, i) => {
-    const daySchedule = parseDaySchedule('tuesday', evalResults);
+    const daySchedule = parseDaySchedule(day, evalResults);
 
     let nextDaySchedule: DaySchedule | undefined;
 
     if (i < days.length - 1) {
-      const nextDay = days[i+1] as 'wednesday' | 'thursday' | 'friday';
+      const nextDay = days[i+1];
 
       nextDaySchedule = parseDaySchedule(nextDay, evalResults);
     }

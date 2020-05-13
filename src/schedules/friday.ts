@@ -7,86 +7,122 @@ export const schedule: IDisplayEntry[] = [
   },
   {
     pre_title: "",
-    title: "Presentations begin at 10:48 AM",
+    title: "Presentations begin at 10:12 AM",
   },
   {
     pre_title: "",
-    title: "Up Next: Kat Vlasova",
+    title: "Up Next: Tushar Goyal",
   },
   {
     pre_title: "",
-    title: "Up Next: Katie Krobock",
+    title: "Up Next: Rashida Kamal",
   },
   {
     pre_title: "",
-    title: "Up Next: Ruojin Shi",
+    title: "Up Next: Mark Lam",
   },
   {
     pre_title: "",
-    title: "Up Next: Andri Kumar",
-  },
-  {
-    pre_title: "break. Come back at 11:48 AM",
-    title: "Up Next: Jacquelyn Liu",
+    title: "Up Next: Cara Neel",
   },
   {
     pre_title: "",
-    title: "Up Next: Emily Lin",
+    title: "Up Next: Jacky Chen",
   },
   {
     pre_title: "",
-    title: "Up Next: Lydia Jessup",
+    title: "Up Next: Clareese Hill",
   },
   {
     pre_title: "",
-    title: "Up Next: Ashley Jane Lewis",
+    title: "Up Next: Manu Jain",
   },
   {
     pre_title: "",
-    title: "Up Next: Andrew lee",
+    title: "Up Next: Su He",
+  },
+  {
+    pre_title: "break until 12:00 PM",
+    title: "Up Next: Atharva Patil",
   },
   {
     pre_title: "",
-    title: "Up Next: Jenny (Woan-chin) Lin",
+    title: "Up Next: Son Luu",
   },
   {
     pre_title: "",
-    title: "Up Next: Tanic Nakpresha",
+    title: "Up Next: Nianqi Zhang",
   },
   {
     pre_title: "",
-    title: "Up Next: Suzanne Li",
-  },
-  {
-    pre_title: "lunch. Come back at 2:24 PM",
-    title: "Up Next: Hye (Maria) Ryenog",
+    title: "Up Next: Anna Gudnason",
   },
   {
     pre_title: "",
-    title: "Up Next: Maya Pruitt",
+    title: "Up Next: Yunze Shi",
   },
   {
     pre_title: "",
-    title: "Up Next: Jaekook Han",
+    title: "Up Next: Winnie Yoe",
   },
   {
     pre_title: "",
-    title: "Up Next: Ada Jiang",
+    title: "Up Next: Chenhe Zhang",
+  },
+  {
+    pre_title: "lunch break until 2:24 PM",
+    title: "Up Next: Joseph Baker",
   },
   {
     pre_title: "",
-    title: "Up Next: Becca Moore",
+    title: "Up Next: Gabriella Garcia",
   },
   {
     pre_title: "",
-    title: "Up Next: Wenjing Liu",
+    title: "Up Next: Ellie Lin",
   },
   {
     pre_title: "",
-    title: "Up Next: Emma Norton",
+    title: "Up Next: Yuguang Zhang",
   },
   {
     pre_title: "",
-    title: "Up Next: Aditya (Adi) Dahiya",
+    title: "Up Next: Eva Philips",
+  },
+  {
+    pre_title: "",
+    title: "Up Next: David Azar",
+  },
+  {
+    pre_title: "",
+    title: "Up Next: Marcela Mancino",
+  },
+  {
+    pre_title: "break until 4:00 PM",
+    title: "Up Next: Antonio Guimaraes",
+  },
+  {
+    pre_title: "",
+    title: "Up Next: SJ Zhang",
+  },
+  {
+    pre_title: "",
+    title: "Up Next: Joy Antwi",
+  },
+  {
+    pre_title: "",
+    title: "Up Next: Arnab Chakravarty",
+  },
+  {
+    pre_title: "",
+    title: "Up Next: Jiwon Shin",
+  },
+  {
+    pre_title: "",
+    title: "Up Next: Sukanya Aneja",
+  },
+  {
+    pre_title: "",
+    title: "Up Next: Brent Bailey",
   },
 ];
