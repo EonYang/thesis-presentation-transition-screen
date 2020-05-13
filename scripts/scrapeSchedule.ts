@@ -13,13 +13,6 @@ interface SchedulEntry {
 
 type DaySchedule = SchedulEntry[]
 
-interface DaySchedules {
-  tuesday: DaySchedule,
-  wednesday: DaySchedule,
-  thursday: DaySchedule,
-  friday: DaySchedule
-}
-
 const parseDaySchedule = (dayOfWeek: 'tuesday' | 'wednesday' | 'thursday' | 'friday', scheduleByTime: VideoScheduleRowContents[] | null): DaySchedule => {
   const result: DaySchedule = [];
 
@@ -40,7 +33,7 @@ const parseDaySchedule = (dayOfWeek: 'tuesday' | 'wednesday' | 'thursday' | 'fri
 
 const breakTypes = ["break", "lunch"];
 
-const toPlayableSchedule = (daySchedule: DaySchedule): IDisplayEntry[] => {
+const toPlayableSchedule = (daySchedule: DaySchedule, nextDaySchedule?: DaySchedule): IDisplayEntry[] => {
   const technicalDiffulty: IDisplayEntry = {
     pre_title: 'Come back soon',
     title: 'Technical difficulties'
@@ -81,6 +74,13 @@ const toPlayableSchedule = (daySchedule: DaySchedule): IDisplayEntry[] => {
       });
     }
 
+  }
+
+  if (nextDaySchedule) {
+    result.push({
+      pre_title: `See You Tomorrow at ${nextDaySchedule[0].time}`,
+      title: "Thank You",
+    })
   }
 
   return result;
@@ -145,11 +145,20 @@ const scrapeSchedule = async (url: string, destinationFileName: string) => {
 
   console.log('got schedule: ', evalResults);
 
+  const days = ['tuesday', 'wednesday', 'thursday', 'friday'];
 
-  ['tuesday', 'wednesday', 'thursday', 'friday'].forEach(async day => {
+  days.forEach(async (day, i) => {
     const daySchedule = parseDaySchedule('tuesday', evalResults);
 
-    const scheduleEntry = toPlayableSchedule(daySchedule);
+    let nextDaySchedule: DaySchedule | undefined;
+
+    if (i < days.length - 1) {
+      const nextDay = days[i+1] as 'wednesday' | 'thursday' | 'friday';
+
+      nextDaySchedule = parseDaySchedule(nextDay, evalResults);
+    }
+    
+    const scheduleEntry = toPlayableSchedule(daySchedule, nextDaySchedule);
 
 
     const outFileContents = `

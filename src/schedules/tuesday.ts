@@ -89,4 +89,8 @@ export const schedule: IDisplayEntry[] = [
     pre_title: "",
     title: "Up Next: Aditya (Adi) Dahiya",
   },
+  {
+    pre_title: "See You Tomorrow at 10:00 AM",
+    title: "Thank You",
+  },
 ];
